@@ -7,9 +7,9 @@ const { data: navigation } = await useAsyncData('docs-nav', () =>
 <template>
   <div>
     <AppHeader />
-    <UPage class="max-w-6xl mx-auto px-6">
+    <UPage class="max-w-6xl mx-auto px-6" :ui="{ left: 'w-64' }">
       <template #left>
-        <UPageAside class="px-4 py-6">
+        <UPageAside class="pl-0 pr-4 py-6">
           <UContentNavigation :navigation="navigation ?? []" />
         </UPageAside>
       </template>

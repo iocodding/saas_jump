@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
 
-const cloneCommand = 'git clone https://github.com/your-org/saas-jump.git'
+const cloneCommand = 'git clone git@github.com:iocodding/saas_jump.git'
 const copied = ref(false)
 
 const copy = async () => {
@@ -41,7 +41,7 @@ const copy = async () => {
         />
       </button>
       <UButton
-        to="https://github.com/your-org/saas-jump"
+        to="https://github.com/iocodding/saas_jump"
         target="_blank"
         color="neutral"
         variant="outline"

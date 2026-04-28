@@ -10,10 +10,9 @@ const config = useRuntimeConfig()
       </p>
     </template>
     <template #right>
-      <div class="flex items-center gap-4 text-sm text-muted">
-        <NuxtLink to="/privacy" class="hover:text-default transition-colors">Privacy</NuxtLink>
-        <NuxtLink to="/terms" class="hover:text-default transition-colors">Terms</NuxtLink>
-      </div>
+      <NuxtLink to="/docs/getting-started/introduction" class="text-sm text-muted hover:text-default transition-colors">
+        Documentation
+      </NuxtLink>
     </template>
   </UFooter>
 </template>
