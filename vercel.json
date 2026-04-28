@@ -1,4 +1,4 @@
 {
-  "buildCommand": "pnpm run build",
+  "buildCommand": "pnpm rebuild better-sqlite3 && pnpm run build",
   "framework": "nuxtjs"
 }
