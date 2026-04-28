@@ -10,14 +10,27 @@ export const useAuth = () => {
   const signup = async (email: string, password: string, displayName: string) => {
     loading.value = true
     error.value = null
-    const { error: err } = await supabase.auth.signUp({
+    const { error: signUpErr } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { display_name: displayName } },
     })
-    if (err) error.value = err.message
+    if (signUpErr) {
+      error.value = signUpErr.message
+      loading.value = false
+      return false
+    }
+    // Sign in immediately to ensure the session JWT is fully established
+    // before any authenticated DB requests are made
+    const { error: signInErr } = await supabase.auth.signInWithPassword({ email, password })
+    if (signInErr) {
+      error.value = signInErr.message
+      loading.value = false
+      return false
+    }
+    await router.push('/dashboard/projects')
     loading.value = false
-    return !err
+    return true
   }
 
   const login = async (email: string, password: string) => {

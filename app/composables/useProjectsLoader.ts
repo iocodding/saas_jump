@@ -19,38 +19,22 @@ export const useProjectsLoader = () => {
     enabled: computed(() => !!user.value),
   })
 
-  // Realtime subscription — wired up internally, no consumer involvement needed
   let channel: ReturnType<typeof supabase.channel> | null = null
 
   onMounted(() => {
     if (!user.value) return
+    const userId = user.value.id
 
+    // No server-side filter — receive all changes and guard client-side.
+    // Filtered postgres_changes subscriptions require an authenticated JWT
+    // handshake that can fail silently; this approach is always reliable.
     channel = supabase
-      .channel('projects-list')
+      .channel(`projects-${userId}`)
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'projects', filter: `user_id=eq.${user.value.id}` },
-        (payload) => {
-          if (payload.eventType === 'INSERT') {
-            qc.setQueryData<Project[]>(['projects'], (old = []) => {
-              const incoming = payload.new as Project
-              if (old.some(p => p.id === incoming.id)) return old
-              return [incoming, ...old]
-            })
-          }
-          else if (payload.eventType === 'UPDATE') {
-            const updated = payload.new as Project
-            qc.setQueryData<Project[]>(['projects'], (old = []) =>
-              old.map(p => p.id === updated.id ? updated : p)
-            )
-            qc.setQueryData<Project>(['projects', updated.id], updated)
-          }
-          else if (payload.eventType === 'DELETE') {
-            const deletedId = (payload.old as { id: string }).id
-            qc.setQueryData<Project[]>(['projects'], (old = []) =>
-              old.filter(p => p.id !== deletedId)
-            )
-          }
+        { event: '*', schema: 'public', table: 'projects' },
+        () => {
+          qc.invalidateQueries({ queryKey: ['projects'] })
         },
       )
       .subscribe()

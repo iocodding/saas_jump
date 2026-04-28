@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const user = useSupabaseUser()
+const user = useSupabaseUser();
 </script>
 
 <template>
@@ -10,14 +10,21 @@ const user = useSupabaseUser()
       </NuxtLink>
     </template>
 
+    <template #center>
+      <UNavigationMenu
+        :items="[{ label: 'Docs', to: '/docs/getting-started/introduction' }]"
+      />
+    </template>
+
     <template #right>
       <UColorModeButton />
       <template v-if="user">
-        <UButton to="/dashboard/projects" size="sm">Dashboard</UButton>
+        <UButton to="/dashboard/projects" size="sm">Demo App Dashboard</UButton>
       </template>
       <template v-else>
-        <UButton to="/auth/login" color="neutral" variant="ghost" size="sm">Log in</UButton>
-        <UButton to="/auth/signup" size="sm">Get started</UButton>
+        <UButton to="/auth/login" color="neutral" variant="ghost" size="sm"
+          >Demo App Log in</UButton
+        >
       </template>
     </template>
   </UHeader>

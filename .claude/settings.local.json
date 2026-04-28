@@ -14,7 +14,8 @@
       "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__list_projects",
       "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__list_tables",
       "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__execute_sql",
-      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__apply_migration"
+      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__apply_migration",
+      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__get_logs"
     ]
   }
 }

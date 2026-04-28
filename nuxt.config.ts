@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
+    '@nuxt/content',
     '@nuxtjs/supabase',
   ],
 
@@ -22,7 +23,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/auth/login',
       callback: '/auth/confirm',
-      exclude: ['/', '/auth/*'],
+      exclude: ['/', '/auth/*', '/docs/*'],
     },
     cookieOptions: {
       maxAge: 60 * 60 * 8,

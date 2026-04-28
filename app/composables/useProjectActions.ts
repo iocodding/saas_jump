@@ -9,9 +9,11 @@ export const useProjectActions = () => {
 
   const createMutation = useMutation({
     mutationFn: async (payload: { title: string; description?: string }) => {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) throw new Error('Not authenticated')
       const { data, error } = await supabase
         .from('projects')
-        .insert({ ...payload, user_id: "e9e8d4c1-1564-4217-bcf1-ea59011f6d9d" })
+        .insert({ ...payload, user_id: session.user.id })
         .select()
         .single()
       if (error) throw error
@@ -75,7 +77,7 @@ export const useProjectActions = () => {
   })
 
   return {
-    create: (payload: { title: string; description?: string; user_id: string }) => createMutation.mutateAsync(payload),
+    create: (payload: { title: string; description?: string }) => createMutation.mutateAsync(payload),
     update: (id: string, payload: Partial<Pick<Project, 'title' | 'description'>>) =>
       updateMutation.mutateAsync({ id, ...payload }),
     remove: (id: string) => deleteMutation.mutateAsync(id),
