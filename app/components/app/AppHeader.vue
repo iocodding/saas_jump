@@ -10,12 +10,6 @@ const user = useSupabaseUser();
       </NuxtLink>
     </template>
 
-    <template #center>
-      <UNavigationMenu
-        :items="[{ label: 'Docs', to: '/docs/getting-started/introduction' }]"
-      />
-    </template>
-
     <template #right>
       <UColorModeButton />
       <template v-if="user">

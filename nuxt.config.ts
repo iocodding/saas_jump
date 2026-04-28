@@ -8,7 +8,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
-    '@nuxt/content',
     '@nuxtjs/supabase',
   ],
 
@@ -40,16 +39,8 @@ export default defineNuxtConfig({
     },
   },
 
-  content: {
-    database: {
-      type: 'libsql',
-      url: process.env.NUXT_CONTENT_DB_URL || 'file:.data/content.db',
-    },
-  },
-
   routeRules: {
     '/': { prerender: true },
-    '/docs/**': { prerender: true },
   },
 
   runtimeConfig: {

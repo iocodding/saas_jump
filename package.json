@@ -14,8 +14,6 @@
   "dependencies": {
     "@iconify-json/lucide": "^1.2.104",
     "@iconify-json/simple-icons": "^1.2.80",
-    "@libsql/client": "^0.14.0",
-    "@nuxt/content": "^3.13.0",
     "@nuxt/ui": "^4.7.0",
     "@nuxtjs/supabase": "^2.0.6",
     "@supabase/supabase-js": "^2.104.1",

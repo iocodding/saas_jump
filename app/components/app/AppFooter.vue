@@ -9,10 +9,5 @@ const config = useRuntimeConfig()
         © {{ new Date().getFullYear() }} {{ config.public.appName }}. All rights reserved.
       </p>
     </template>
-    <template #right>
-      <NuxtLink to="/docs/getting-started/introduction" class="text-sm text-muted hover:text-default transition-colors">
-        Documentation
-      </NuxtLink>
-    </template>
   </UFooter>
 </template>
