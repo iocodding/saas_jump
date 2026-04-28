@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx nuxi@latest init . --force --package-manager npm --no-gitInit)",
+      "Bash(npx nuxi@latest init . --force --package-manager npm --no-gitInit --template ui)",
+      "Bash(pnpm add *)",
+      "Bash(npm install *)",
+      "Bash(pnpm run *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('runtimeConfig', {}\\).get\\('public', {}\\).get\\('supabase', {}\\), indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); rc=d.get\\('runtimeConfig', {}\\); print\\(json.dumps\\({'public_supabase': rc.get\\('public', {}\\).get\\('supabase', 'NOT FOUND'\\)}, indent=2\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(xargs grep *)",
+      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__list_projects",
+      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__list_tables",
+      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__execute_sql",
+      "mcp__5d55ff89-e479-4ea5-afdd-d23812b5aa76__apply_migration"
+    ]
+  }
+}

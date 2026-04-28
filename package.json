@@ -1,0 +1,42 @@
+{
+  "name": "saas-boilerplate",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "types:supabase": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > supabase/types.ts"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.104",
+    "@iconify-json/simple-icons": "^1.2.80",
+    "@nuxt/ui": "^4.7.0",
+    "@nuxtjs/supabase": "^2.0.6",
+    "@supabase/supabase-js": "^2.104.1",
+    "@tanstack/vue-query": "^5.100.5",
+    "nuxt": "^4.4.2",
+    "tailwindcss": "^4.2.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "eslint": "^10.2.1",
+    "supabase": "^2.22.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.2.7"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "@tailwindcss/oxide",
+      "esbuild",
+      "unrs-resolver",
+      "vue-demi"
+    ]
+  }
+}
